@@ -2,13 +2,18 @@ package org.example.sampleshawnmendes.service;
 
 import org.example.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import org.example.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@Service
+//@Service
 public class ShawnMendesService {
 
-    SampleShawnMendesServerProxy sampleShawnMendesServerClient;
-    ShawnMendesServiceMapper shawnMendesServiceMapper;
+    private SampleShawnMendesServerProxy sampleShawnMendesServerClient;
+    private ShawnMendesServiceMapper shawnMendesServiceMapper;
+
+    public ShawnMendesService(SampleShawnMendesServerProxy sampleShawnMendesServerClient, ShawnMendesServiceMapper shawnMendesServiceMapper) {
+        this.sampleShawnMendesServerClient = sampleShawnMendesServerClient;
+        this.shawnMendesServiceMapper = shawnMendesServiceMapper;
+    }
 
     public void testClient() {
         String postJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makePostRequest();

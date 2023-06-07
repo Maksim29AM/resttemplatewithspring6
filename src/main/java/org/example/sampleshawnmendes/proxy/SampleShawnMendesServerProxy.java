@@ -4,7 +4,7 @@ package org.example.sampleshawnmendes.proxy;
 import org.example.myresttemplate.RestTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class SampleShawnMendesServerProxy {
 
 //    @Autowired
@@ -21,6 +21,7 @@ public class SampleShawnMendesServerProxy {
     }
 
     public String makePostRequest() {
+        System.out.println("makePostRequest");
 //        UriComponentsBuilder builder = UriComponentsBuilder
 //                .newInstance()
 //                .scheme("http")
@@ -50,6 +51,7 @@ public class SampleShawnMendesServerProxy {
 
 
     public String makeGetRequest() {
+        System.out.println("makeGetRequest");
 //        UriComponentsBuilder builder = UriComponentsBuilder
 //                .newInstance()
 //                .scheme("http")

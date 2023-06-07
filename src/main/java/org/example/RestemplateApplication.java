@@ -3,6 +3,7 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import org.example.sampleshawnmendes.service.ShawnMendesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +22,8 @@ public class RestemplateApplication {
         singletonNames.forEach(
                 System.out::println
         );
+        ShawnMendesService shawnMendesService = annotationConfigApplicationContext.getBean(ShawnMendesService.class);
+        shawnMendesService.testClient();
 //        mainApplicationRunner.run();
     }
 
