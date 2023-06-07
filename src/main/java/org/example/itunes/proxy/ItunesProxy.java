@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ItunesProxy {
 
-    RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     //    @Value("${itunes.service.url}")
     String url;

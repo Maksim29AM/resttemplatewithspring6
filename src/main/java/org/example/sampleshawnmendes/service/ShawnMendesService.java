@@ -2,13 +2,13 @@ package org.example.sampleshawnmendes.service;
 
 import org.example.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import org.example.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class ShawnMendesService {
 
-    private SampleShawnMendesServerProxy sampleShawnMendesServerClient;
-    private ShawnMendesServiceMapper shawnMendesServiceMapper;
+    private final SampleShawnMendesServerProxy sampleShawnMendesServerClient;
+    private final ShawnMendesServiceMapper shawnMendesServiceMapper;
 
     public ShawnMendesService(SampleShawnMendesServerProxy sampleShawnMendesServerClient, ShawnMendesServiceMapper shawnMendesServiceMapper) {
         this.sampleShawnMendesServerClient = sampleShawnMendesServerClient;

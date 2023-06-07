@@ -4,11 +4,10 @@ package org.example.sampleshawnmendes.proxy;
 import org.example.myresttemplate.RestTemplate;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class SampleShawnMendesServerProxy {
 
-//    @Autowired
-    RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     //    @Value("${sample-shawn-mendes-server.service.url}")
     String url;

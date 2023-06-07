@@ -2,7 +2,9 @@ package org.example.sampleshawnmendes.service;
 
 import java.util.List;
 import org.example.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ShawnMendesServiceMapper {
 
     SampleServerShawnMendesResponse mapJsonToSampleShawnMendesResponse(String json) {
