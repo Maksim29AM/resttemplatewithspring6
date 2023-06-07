@@ -4,7 +4,7 @@ package org.example.sampleshawnmendes.proxy;
 import org.example.myresttemplate.RestTemplate;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class SampleShawnMendesServerProxy {
 
 //    @Autowired

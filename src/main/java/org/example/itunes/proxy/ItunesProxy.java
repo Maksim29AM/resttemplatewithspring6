@@ -2,7 +2,9 @@ package org.example.itunes.proxy;
 
 
 import org.example.myresttemplate.RestTemplate;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItunesProxy {
 
     RestTemplate restTemplate;

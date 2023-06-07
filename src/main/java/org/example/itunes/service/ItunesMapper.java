@@ -2,7 +2,9 @@ package org.example.itunes.service;
 
 import java.util.List;
 import org.example.itunes.proxy.ItunesResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItunesMapper {
 
     ItunesResponse mapJsonToItunesResponse(String json) {
