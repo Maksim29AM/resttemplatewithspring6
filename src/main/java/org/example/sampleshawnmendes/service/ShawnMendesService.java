@@ -1,5 +1,6 @@
 package org.example.sampleshawnmendes.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import org.example.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,12 @@ public class ShawnMendesService {
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;
     }
 
-    public void testClient() {
-        String postJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makePostRequest();
+    public void testClient() throws JsonProcessingException {
+        String postRequest = sampleShawnMendesServerClient.makePostRequest();
+        if (postRequest != null) {
+            SampleServerShawnMendesResponse sampleShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postRequest);
+            System.out.println(sampleShawnMendesResponse);
+        }
         String getJsonSampleShawnMendesServer = sampleShawnMendesServerClient.makeGetRequest();
         if (getJsonSampleShawnMendesServer != null) {
             SampleServerShawnMendesResponse sampleShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer);
@@ -24,11 +29,6 @@ public class ShawnMendesService {
         }
         sampleShawnMendesServerClient.makeDeleteRequest("0");
         String getJsonSampleShawnMendesServer2 = sampleShawnMendesServerClient.makeGetRequest();
-        if (postJsonSampleShawnMendesServer != null) {
-            SampleServerShawnMendesResponse sampleShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(postJsonSampleShawnMendesServer);
-            System.out.println(sampleShawnMendesResponse);
-        }
-
         if (getJsonSampleShawnMendesServer2 != null) {
             SampleServerShawnMendesResponse sampleShawnMendesResponse = shawnMendesServiceMapper.mapJsonToSampleShawnMendesResponse(getJsonSampleShawnMendesServer2);
             System.out.println(sampleShawnMendesResponse);
