@@ -1,18 +1,24 @@
 package org.example.itunes.proxy;
 
 
-import org.example.myresttemplate.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class ItunesProxy {
 
     private final RestTemplate restTemplate;
 
-    //    @Value("${itunes.service.url}")
+    @Value("${itunes.service.url}")
     String url;
 
-    //    @Value("${itunes.service.port}")
+    @Value("${itunes.service.port}")
     int port;
 
     public ItunesProxy(RestTemplate restTemplate) {
@@ -20,30 +26,28 @@ public class ItunesProxy {
     }
 
     public String makeGetRequest(String term, Integer limit) {
-//        UriComponentsBuilder builder = UriComponentsBuilder
-//                .newInstance()
-//                .scheme("https")
-//                .host(url)
-//                .port(port)
-//                .path("/search")
-//                .queryParam("term", term)
-//                .queryParam("limit", limit);
-//        try {
-//            ResponseEntity<String> response = restTemplate.exchange(
-//                    builder.build().toUri(),
-//                    HttpMethod.GET,
-//                    null,
-//                    String.class
-//            );
-//            return response.getBody();
-//        } catch (RestClientResponseException exception) {
-//            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
-//        } catch (RestClientException exception) {
-//            System.out.println(exception.getMessage());
-//        }
-//        return null;
-    return restTemplate.exchange();
-
+        UriComponentsBuilder builder = UriComponentsBuilder
+                .newInstance()
+                .scheme("https")
+                .host(url)
+                .port(port)
+                .path("/search")
+                .queryParam("term", term)
+                .queryParam("limit", limit);
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(
+                    builder.build().toUri(),
+                    HttpMethod.GET,
+                    null,
+                    String.class
+            );
+            return response.getBody();
+        } catch (RestClientResponseException exception) {
+            System.out.println(exception.getStatusText() + " " + exception.getStatusCode().value());
+        } catch (RestClientException exception) {
+            System.out.println(exception.getMessage());
+        }
+        return null;
     }
 
 }
