@@ -6,10 +6,12 @@ import org.example.sampleshawnmendes.proxy.SampleServerShawnMendesResponse;
 import org.example.sampleshawnmendes.proxy.SampleShawnMendesServerProxy;
 import org.example.songviewer.Song;
 import org.example.songviewer.SongFetchable;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
+@Primary
 public class ShawnMendesService implements SongFetchable {
 
     private final SampleShawnMendesServerProxy sampleShawnMendesServerClient;

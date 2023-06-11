@@ -7,15 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class SongViewerService {
 
-    private final SongFetchable songFetchable;
+    private final List<SongFetchable> services;
 
-    SongViewerService(SongFetchable songFetchable) {
-        this.songFetchable = songFetchable;
+    SongViewerService(List<SongFetchable> services) {
+        this.services = services;
     }
 
     public List<Song> viewAllSongs() {
         List<Song> songsToView = new ArrayList<>();
-        songsToView.addAll(songFetchable.fetchAllSongs());
+        services.forEach(
+                service -> songsToView.addAll(service.fetchAllSongs())
+        );
         return songsToView;
     }
 }
