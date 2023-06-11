@@ -1,6 +1,5 @@
 package org.example;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.example.itunes.service.ItunesService;
 import org.example.sampleshawnmendes.service.ShawnMendesService;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,7 @@ public class MainApplicationRunner {
         this.shawnMendesService = shawnMendesService;
     }
 
-    public void run() throws JsonProcessingException {
+    public void run() {
         itunesService.fetchShawnMendesSongs();
         shawnMendesService.testClient();
     }

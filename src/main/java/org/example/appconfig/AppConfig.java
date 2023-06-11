@@ -1,5 +1,6 @@
 package org.example.appconfig;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -17,5 +18,10 @@ public class AppConfig {
         yaml.setResources(new ClassPathResource("application.yml"));
         propertyConfigurer.setProperties(Objects.requireNonNull(yaml.getObject()));
         return propertyConfigurer;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

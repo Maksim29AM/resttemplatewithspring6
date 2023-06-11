@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 public class RestemplateApplication {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(
                 RestemplateApplication.class
         );
