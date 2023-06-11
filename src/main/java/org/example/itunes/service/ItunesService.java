@@ -20,7 +20,7 @@ public class ItunesService {
         this.itunesMapper = itunesMapper;
     }
 
-    public List<ItunesResult> fetchShawnMendesSongs() {
+    public List<ItunesResult> fetchShawnMendesSongsFromItunes() {
         String jsonSongs = iTunesClient.makeGetRequest("shawnmendes", 3);
         if (jsonSongs == null) {
             log.error("jsonSongs was null");

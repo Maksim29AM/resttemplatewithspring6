@@ -1,22 +1,23 @@
 package org.example;
 
-import org.example.itunes.service.ItunesService;
-import org.example.sampleshawnmendes.service.ShawnMendesService;
+import java.util.List;
+import lombok.extern.log4j.Log4j2;
+import org.example.songviewer.Song;
+import org.example.songviewer.SongViewerService;
 import org.springframework.stereotype.Component;
 
 @Component
+@Log4j2
 public class MainApplicationRunner {
 
-    private final ItunesService itunesService;
-    private final ShawnMendesService shawnMendesService;
+    private final SongViewerService songViewerService;
 
-    MainApplicationRunner(ItunesService itunesService, ShawnMendesService shawnMendesService) {
-        this.itunesService = itunesService;
-        this.shawnMendesService = shawnMendesService;
+    MainApplicationRunner(SongViewerService songViewerService) {
+        this.songViewerService = songViewerService;
     }
 
     public void run() {
-        itunesService.fetchShawnMendesSongs();
-        shawnMendesService.testClient();
+        List<Song> songs = songViewerService.viewAllSongs();
+        log.info(songs);
     }
 }

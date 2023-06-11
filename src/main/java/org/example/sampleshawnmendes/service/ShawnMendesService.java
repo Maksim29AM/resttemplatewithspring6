@@ -17,7 +17,7 @@ public class ShawnMendesService {
         this.shawnMendesServiceMapper = shawnMendesServiceMapper;
     }
 
-    public String fetchAllShawnMendesSongs() {
+    public String fetchAllShawnMendesSongsFromLocalhost() {
         String jsonSongs = sampleShawnMendesServerClient.makeGetRequest();
         if (jsonSongs == null) {
             log.error("jsonSongs was null");
