@@ -1,8 +1,11 @@
 package org.example.itunes.service;
 
+import java.util.Collections;
+import java.util.List;
 import lombok.extern.log4j.Log4j2;
 import org.example.itunes.proxy.ItunesProxy;
 import org.example.itunes.proxy.ItunesResponse;
+import org.example.itunes.proxy.ItunesResult;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,11 +20,14 @@ public class ItunesService {
         this.itunesMapper = itunesMapper;
     }
 
-    public void fetchShawnMendesSongs() {
-        String json = iTunesClient.makeGetRequest("shawnmendes", 3);
-        if (json != null) {
-            ItunesResponse shawnMendesResponse = itunesMapper.mapJsonToItunesResponse(json);
-            log.info(shawnMendesResponse);
+    public List<ItunesResult> fetchShawnMendesSongs() {
+        String jsonSongs = iTunesClient.makeGetRequest("shawnmendes", 3);
+        if (jsonSongs == null) {
+            log.error("jsonSongs was null");
+            return Collections.emptyList();
         }
+        ItunesResponse shawnMendesResponse = itunesMapper.mapJsonToItunesResponse(jsonSongs);
+        log.info("ItunesService fetched: " + shawnMendesResponse);
+        return shawnMendesResponse.results();
     }
 }
