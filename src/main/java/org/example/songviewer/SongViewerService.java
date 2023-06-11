@@ -19,13 +19,11 @@ public class SongViewerService {
     }
 
     public List<Song> viewAllSongs() {
+        List<Song> itunesResults = itunesService.fetchAllSongs();
+        List<Song> songs = shawnMendesService.fetchAllSongs();
         List<Song> songsToView = new ArrayList<>();
-        List<ItunesResult> itunesResults = itunesService.fetchShawnMendesSongsFromItunes();
-        String songs = shawnMendesService.fetchAllShawnMendesSongsFromLocalhost();
-        itunesResults.forEach(
-                        itunesResult -> songsToView.add(new Song(itunesResult.trackName()))
-        );
-        songsToView.add(new Song(songs));
+        songsToView.addAll(itunesResults);
+        songsToView.addAll(songs);
         return songsToView;
     }
 }
